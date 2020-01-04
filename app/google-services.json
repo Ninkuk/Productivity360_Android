@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "520868258814",
+    "firebase_url": "https://productivity360-247.firebaseio.com",
+    "project_id": "productivity360-247",
+    "storage_bucket": "productivity360-247.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520868258814:android:8cb7f065c5e1466a2c16af",
+        "android_client_info": {
+          "package_name": "com.pathtofbla.productivity360"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520868258814-0ffa2dpt24jgvs7b3g7mi3eu9rj8m1vo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pathtofbla.productivity360",
+            "certificate_hash": "451f0c78e199d6d8968e2ba3ed9e7897b84dade4"
+          }
+        },
+        {
+          "client_id": "520868258814-93lq5qt7s79l1e4trhmpoq7fkivt8lm7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHI2tl6Qa98gLgy7kuIb239SK7spKuaBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520868258814-93lq5qt7s79l1e4trhmpoq7fkivt8lm7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
