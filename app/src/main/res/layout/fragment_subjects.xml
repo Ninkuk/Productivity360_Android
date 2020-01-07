@@ -12,6 +12,7 @@
         android:layout_marginTop="?attr/actionBarSize" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:id="@+id/addSubject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
