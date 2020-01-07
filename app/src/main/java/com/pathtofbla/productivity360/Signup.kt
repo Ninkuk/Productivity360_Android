@@ -77,6 +77,7 @@ class Signup : AppCompatActivity() {
     private fun switchToLogin() {
         accountCheckSignup.setOnClickListener {
             val switchToLogin = Intent(this, Login::class.java)
+            switchToLogin.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(switchToLogin)
         }
     }
