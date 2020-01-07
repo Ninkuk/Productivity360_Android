@@ -13,7 +13,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <TextView
-        android:id="@+id/level"
+        android:id="@+id/currentLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/level_1"
@@ -28,15 +28,17 @@
         android:layout_marginTop="5dp">
 
         <ProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/levelProgressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="10"
             android:progressDrawable="@drawable/curved_progress_bar" />
     </FrameLayout>
 
     <TextView
-        android:id="@+id/levelUpPoints"
+        android:id="@+id/levelProgressText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/_0_points_needed_to_next_level"

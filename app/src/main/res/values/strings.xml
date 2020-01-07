@@ -8,7 +8,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="forgot_password">Forgot password?</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main"> </string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -32,4 +32,7 @@
     <string name="level_1">Level 1</string>
     <string name="_0_points_needed_to_next_level">0 points needed to next level</string>
     <string name="burnout">BURNOUT</string>
+    <string name="sign_out">Sign out</string>
+    <string name="friends">Friends</string>
+    <string name="settings">Settings</string>
 </resources>
