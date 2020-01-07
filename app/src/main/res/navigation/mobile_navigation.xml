@@ -9,22 +9,22 @@
         android:id="@+id/nav_home"
         android:name="com.pathtofbla.productivity360.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_overview" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_calendar"
         android:name="com.pathtofbla.productivity360.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_timetable"
         android:name="com.pathtofbla.productivity360.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
-        android:id="@+id/nav_tools"
+        android:id="@+id/nav_streaks"
         android:name="com.pathtofbla.productivity360.ui.tools.ToolsFragment"
         android:label="@string/menu_tools"
         tools:layout="@layout/fragment_tools" />

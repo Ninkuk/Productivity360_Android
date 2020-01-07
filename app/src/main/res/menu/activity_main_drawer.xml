@@ -3,36 +3,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/productivityPages"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:icon="@drawable/ic_home_white_24dp"
+            android:title="@string/overview" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_calendar"
+            android:icon="@drawable/calendar"
+            android:title="@string/calendar" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_timetable"
+            android:icon="@drawable/timetable"
+            android:title="@string/timetable" />
         <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:id="@+id/nav_streaks"
+            android:icon="@drawable/ic_timeline_white_24dp"
+            android:title="@string/streaks" />
+        <item
+            android:id="@+id/nav_rewards"
+            android:icon="@drawable/ic_stars_white_24dp"
+            android:title="@string/rewards" />
     </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
-        </menu>
-    </item>
-
+    <group
+        android:id="@+id/classPages"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_subjects"
+            android:icon="@drawable/ic_school_white_24dp"
+            android:title="@string/subjects" />
+        <item
+            android:id="@+id/nav_attendance"
+            android:icon="@drawable/attendance"
+            android:title="@string/attendance" />
+    </group>
 </menu>

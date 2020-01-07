@@ -22,4 +22,14 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="streaks">Streaks</string>
+    <string name="rewards">Rewards</string>
+    <string name="timetable">Timetable</string>
+    <string name="calendar">Calendar</string>
+    <string name="overview">Overview</string>
+    <string name="subjects">Subjects</string>
+    <string name="attendance">Attendance</string>
+    <string name="level_1">Level 1</string>
+    <string name="_0_points_needed_to_next_level">0 points needed to next level</string>
+    <string name="burnout">BURNOUT</string>
 </resources>
