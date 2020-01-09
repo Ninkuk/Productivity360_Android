@@ -40,4 +40,11 @@
     <string name="class_name">Class Name</string>
     <string name="building">Building</string>
     <string name="class_time">Class Time</string>
+    <string name="goal_1">Goal #1</string>
+    <string name="_6900">6900</string>
+    <string name="redeem">REDEEM</string>
+    <string name="reward_name">Reward Name</string>
+    <string name="points_needed">Points Needed</string>
+    <string name="description">Description</string>
+    <string name="_0">0</string>
 </resources>
