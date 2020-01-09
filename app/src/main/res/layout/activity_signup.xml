@@ -80,7 +80,7 @@
             android:textColor="@color/colorSecondary"
             app:backgroundTint="@color/colorPrimary" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/accountCheckSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

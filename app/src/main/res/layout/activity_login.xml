@@ -73,7 +73,7 @@
             android:textColor="@color/colorPrimary"
             app:backgroundTint="@color/colorSecondary" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/forgotPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
             android:textAlignment="center"
             android:textColor="@color/colorSecondary" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/accountCheck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
