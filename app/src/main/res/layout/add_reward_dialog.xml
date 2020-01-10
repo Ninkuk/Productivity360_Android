@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:backgroundTint="@color/colorSecondary">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/rewardNameTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/reward_name"
+        android:textColorHint="#FFFFFF"
+        app:boxStrokeColor="@color/colorSecondary"
+        android:theme="@style/LoginTextInputLayoutStyle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/rewardNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_stars_white_24dp"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="#FFFFFF" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/rewardPointsTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textColorHint="#FFFFFF"
+        app:boxStrokeColor="@color/colorSecondary"
+        android:theme="@style/LoginTextInputLayoutStyle"
+        android:hint="@string/points_needed">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/rewardPointsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_attach_money_white_24dp"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:textColor="#FFFFFF"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/rewardDescriptionTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#FFFFFF"
+        app:boxStrokeColor="@color/colorSecondary"
+        android:theme="@style/LoginTextInputLayoutStyle"
+        android:hint="@string/description">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/rewardDescriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_edit_white_24dp"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:textColor="#FFFFFF"
+            android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>
