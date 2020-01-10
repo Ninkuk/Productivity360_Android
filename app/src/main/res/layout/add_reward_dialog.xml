@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -9,13 +8,12 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/rewardNameTextInputLayout"
+        style="@style/Widget.Design.TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/reward_name"
-        android:textColorHint="#FFFFFF"
-        app:boxStrokeColor="@color/colorSecondary"
-        android:theme="@style/LoginTextInputLayoutStyle">
+        android:textColorHint="#FFFFFF">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/rewardNameTextView"
@@ -30,13 +28,12 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/rewardPointsTextInputLayout"
+        style="@style/Widget.Design.TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:textColorHint="#FFFFFF"
-        app:boxStrokeColor="@color/colorSecondary"
-        android:theme="@style/LoginTextInputLayoutStyle"
-        android:hint="@string/points_needed">
+        android:hint="@string/points_needed"
+        android:textColorHint="#FFFFFF">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/rewardPointsTextView"
@@ -45,18 +42,17 @@
             android:drawableStart="@drawable/ic_attach_money_white_24dp"
             android:drawablePadding="10dp"
             android:ems="10"
-            android:textColor="#FFFFFF"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textColor="#FFFFFF" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/rewardDescriptionTextInputLayout"
+        style="@style/Widget.Design.TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="#FFFFFF"
-        app:boxStrokeColor="@color/colorSecondary"
-        android:theme="@style/LoginTextInputLayoutStyle"
-        android:hint="@string/description">
+        android:hint="@string/description"
+        android:textColorHint="#FFFFFF">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/rewardDescriptionTextView"
@@ -65,7 +61,7 @@
             android:drawableStart="@drawable/ic_edit_white_24dp"
             android:drawablePadding="10dp"
             android:ems="10"
-            android:textColor="#FFFFFF"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:textColor="#FFFFFF" />
     </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>

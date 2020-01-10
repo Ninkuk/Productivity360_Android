@@ -20,9 +20,4 @@
 
     <style name="Theme.MyApp.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Dark" />
 
-    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="boxStrokeColor">#FFC107</item>
-        <item name="boxStrokeWidth">2dp</item>
-    </style>
-
 </resources>

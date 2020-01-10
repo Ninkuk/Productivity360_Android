@@ -74,20 +74,6 @@ class RewardsViewHolder(
                     )
                     builder.setView(editAlertLayout)
 
-                    //forces the hint text color to be gold after the user typed in the editText
-                    editAlertLayout.rewardNameTextInputLayout.defaultHintTextColor =
-                        ColorStateList(
-                            arrayOf(intArrayOf()), intArrayOf(0xFFFFC107.toInt())
-                        )
-                    editAlertLayout.rewardPointsTextInputLayout.defaultHintTextColor =
-                        ColorStateList(
-                            arrayOf(intArrayOf()), intArrayOf(0xFFFFC107.toInt())
-                        )
-                    editAlertLayout.rewardDescriptionTextInputLayout.defaultHintTextColor =
-                        ColorStateList(
-                            arrayOf(intArrayOf()), intArrayOf(0xFFFFC107.toInt())
-                        )
-
                     builder.setPositiveButton("Edit", null)
                         .setNegativeButton(
                             "Cancel"
