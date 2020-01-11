@@ -5,4 +5,7 @@
     <color name="colorSecondary">#FFC107</color>
     <color name="colorOnSecondary">#FFFFFF</color>
     <color name="colorAccent">#FFC107</color>
+
+    <color name="red">#F44336</color>
+    <color name="green">#00BFA5</color>
 </resources>
