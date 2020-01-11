@@ -52,7 +52,7 @@
             android:layout_marginTop="5dp"
             android:hint="@string/password"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="#FFFFFF">
+            app:passwordToggleTint="@android:color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordTextView"
