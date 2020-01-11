@@ -1,5 +1,8 @@
 package com.pathtofbla.productivity360
 
+import java.text.SimpleDateFormat
+import java.util.*
+
 open class Task(
     title: String,
     description: String,
@@ -21,13 +24,22 @@ class Homework(
         priority
     )
 
+//class Subject(
+//    title: String,
+////    physicalLocation: Geo,
+//    classroomLocation: String,
+//    startTime: Long,
+//    duration: Long,
+//    teacher: Teacher
+//)
+
 class Subject(
-    title: String,
-//    physicalLocation: Geo,
-    classroomLocation: String,
-    startTime: Long,
-    duration: Long,
-    teacher: Teacher
+    val name: String,
+    val building: String,
+    val startTime: String,
+    val duration: String,
+    val professor: String,
+    val color: String
 )
 
 class Teacher(
@@ -49,3 +61,24 @@ class Rewards(
     points: Int
 )
 
+class Absence(
+    val title: String,
+    val date: Long,
+    val cancelled: Boolean
+)
+
+class FormatDate {
+    companion object {
+        fun convertToString(pattern: String, datetime: Long): String {
+            return SimpleDateFormat(pattern, Locale.US).format(datetime)
+        }
+
+        fun convertToString(pattern: String, datetime: Date): String{
+            return SimpleDateFormat(pattern, Locale.US).format(datetime)
+        }
+
+//        fun converToLong(): Long{
+//
+//        }
+    }
+}

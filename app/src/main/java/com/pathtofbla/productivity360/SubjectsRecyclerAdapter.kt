@@ -19,7 +19,7 @@ class SubjectsRecyclerAdapter(private val subjects: List<Subject>): RecyclerView
     override fun onBindViewHolder(holder: SubjectsViewHolder, position: Int) {
         holder.view.className.text = subjects[position].name
         holder.view.building.text = subjects[position].building
-        holder.view.classTime.text = subjects[position].time
+        holder.view.classTime.text = subjects[position].startTime
         holder.view.professor.text = subjects[position].professor
         holder.view.subjectCard.setCardBackgroundColor(Color.parseColor(subjects[position].color))
     }

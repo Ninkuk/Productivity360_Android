@@ -16,11 +16,11 @@ import kotlinx.android.synthetic.main.add_subject_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_subjects.*
 
 class SubjectsFragment : Fragment() {
-    private val physics = Subject("PHY 121", "BYENG 120", "11:45 AM", "Dr. Alrifai", "#29B6F6")
-    private val math = Subject("MAT 243", "BYENG 120", "11:45 AM", "Dr. Alrifai", "#FFF176")
-    private val digital = Subject("CSE 120", "BYENG 120", "11:45 AM", "Dr. Alrifai", "#4CAF50")
-    private val cs = Subject("CSE 205", "BYENG 120", "11:45 AM", "Dr. Alrifai", "#5E35B1")
-    private val calc = Subject("MAT 265", "BYENG 120", "11:45 AM", "Dr. Alrifai", "#e53935")
+    private val physics = Subject("PHY 121", "BYENG 120", "11:45 AM", "20","Dr. Alrifai", "#29B6F6")
+    private val math = Subject("MAT 243", "BYENG 120", "11:45 AM", "20","Dr. Alrifai", "#FFF176")
+    private val digital = Subject("CSE 120", "BYENG 120", "11:45 AM", "20","Dr. Alrifai", "#4CAF50")
+    private val cs = Subject("CSE 205", "BYENG 120", "11:45 AM", "20","Dr. Alrifai", "#5E35B1")
+    private val calc = Subject("MAT 265", "BYENG 120", "11:45 AM", "20","Dr. Alrifai", "#e53935")
 
     private val subjects = mutableListOf<Subject>()
 
@@ -54,7 +54,7 @@ class SubjectsFragment : Fragment() {
                         val time = alertLayout.timeTextView.text.toString()
                         time.replace("z", "")
 
-                        val subject = Subject(className, building, professor, time, "#e53935")
+                        val subject = Subject(className, building, professor, "20",time, "#e53935")
                         subjects.add(subject)
                         adapter.notifyDataSetChanged()
                     }).setNegativeButton(
