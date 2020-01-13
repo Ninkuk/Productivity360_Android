@@ -24,27 +24,19 @@ class Homework(
         priority
     )
 
-//class Subject(
-//    title: String,
-////    physicalLocation: Geo,
-//    classroomLocation: String,
-//    startTime: Long,
-//    duration: Long,
-//    teacher: Teacher
-//)
-
 class Subject(
-    val name: String,
-    val building: String,
+    val title: String,
+    val classroomLocation: String,
     val startTime: String,
-    val duration: String,
-    val professor: String,
-    val color: String
+    val endTime: String,
+    val teacher: Teacher,
+    val backgroundColor: Int,
+    val textColor: Int
 )
 
 class Teacher(
-    name: String,
-    email: String
+    val name: String,
+    val email: String
 )
 
 class Streak(
