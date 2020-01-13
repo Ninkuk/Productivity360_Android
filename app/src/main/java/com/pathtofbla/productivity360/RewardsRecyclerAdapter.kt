@@ -57,10 +57,9 @@ class RewardsViewHolder(
     private val currentPoints = 4500 //TODO I/O operation to get points here
 
     init {
-
         view.setOnLongClickListener {
             val builder = MaterialAlertDialogBuilder(view.context) //alertDialog to show description of reward
-            builder.setTitle("Edit Reward")
+            builder.setTitle("Reward Info")
                 .setMessage(reward.description)
                 .setPositiveButton(
                     "Edit"
@@ -217,6 +216,5 @@ class RewardsViewHolder(
                 positiveButton.setTextColor(Color.parseColor("#FFC107"))
             }
         }
-
     }
 }
