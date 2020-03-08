@@ -57,10 +57,9 @@ class RewardsViewHolder(
     private val currentPoints = 4500 //TODO I/O operation to get points here
 
     init {
-
         view.setOnLongClickListener {
             val builder = MaterialAlertDialogBuilder(view.context) //alertDialog to show description of reward
-            builder.setTitle("Edit Reward")
+            builder.setTitle("Reward Info")
                 .setMessage(reward.description)
                 .setPositiveButton(
                     "Edit"
@@ -73,20 +72,6 @@ class RewardsViewHolder(
                         null
                     )
                     builder.setView(editAlertLayout)
-
-                    //forces the hint text color to be gold after the user typed in the editText
-                    editAlertLayout.rewardNameTextInputLayout.defaultHintTextColor =
-                        ColorStateList(
-                            arrayOf(intArrayOf()), intArrayOf(0xFFFFC107.toInt())
-                        )
-                    editAlertLayout.rewardPointsTextInputLayout.defaultHintTextColor =
-                        ColorStateList(
-                            arrayOf(intArrayOf()), intArrayOf(0xFFFFC107.toInt())
-                        )
-                    editAlertLayout.rewardDescriptionTextInputLayout.defaultHintTextColor =
-                        ColorStateList(
-                            arrayOf(intArrayOf()), intArrayOf(0xFFFFC107.toInt())
-                        )
 
                     builder.setPositiveButton("Edit", null)
                         .setNegativeButton(
@@ -231,6 +216,5 @@ class RewardsViewHolder(
                 positiveButton.setTextColor(Color.parseColor("#FFC107"))
             }
         }
-
     }
 }

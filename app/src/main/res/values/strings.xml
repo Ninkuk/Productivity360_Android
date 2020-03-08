@@ -16,6 +16,9 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
@@ -40,6 +43,11 @@
     <string name="class_name">Class Name</string>
     <string name="building">Building</string>
     <string name="class_time">Class Time</string>
+    <string name="date">January 1</string>
+    <string name="class_cancelled">Was this class cancelled?</string>
+    <string name="no_absences">No absences yet,\nGood Job!</string>
+    <string name="homework">Homework</string>
+    <string name="task">Task</string>
     <string name="goal_1">Goal #1</string>
     <string name="_6900">6900</string>
     <string name="redeem">REDEEM</string>
@@ -47,4 +55,37 @@
     <string name="points_needed">Points Needed</string>
     <string name="description">Description</string>
     <string name="_0">0</string>
+    <string name="create_a_subject">Create a Subject</string>
+    <string name="email">Email</string>
+    <string name="time_drawable">time drawable</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
+    <string name="pick_a_time">Pick a time</string>
+    <string name="background_color">Background color</string>
+    <string name="chosen_subject_color">chosen subject color</string>
+    <string name="text_color">Text Color</string>
+    <string name="chosen_text_color">chosen text color</string>
+    <string name="create">Create</string>
+    <string name="material_red">Material Red</string>
+    <string name="material_pink">Material Pink</string>
+    <string name="material_purple">Material Purple</string>
+    <string name="material_deep_purple">Material Deep Purple</string>
+    <string name="material_indigo">Material Indigo</string>
+    <string name="material_blue">Material Blue</string>
+    <string name="material_light_blue">Material Light Blue</string>
+    <string name="material_cyan">Material Cyan</string>
+    <string name="material_teal">Material Teal</string>
+    <string name="material_green">Material Green</string>
+    <string name="material_light_green">Material Light Green</string>
+    <string name="material_lime">Material Lime</string>
+    <string name="material_yellow">Material Yellow</string>
+    <string name="material_amber">Material Amber</string>
+    <string name="material_orange">Material Orange</string>
+    <string name="material_deep_orange">Material Deep Orange</string>
+    <string name="material_brown">Material Brown</string>
+    <string name="material_grey">Material Grey</string>
+    <string name="material_blue_gray">Material Blue Gray</string>
+    <string name="white">White</string>
+    <string name="hex">#Hex</string>
+    <string name="chosen_color">chosen color</string>
 </resources>

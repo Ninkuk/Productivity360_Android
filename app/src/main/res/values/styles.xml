@@ -20,9 +20,9 @@
 
     <style name="Theme.MyApp.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Dark" />
 
-    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="boxStrokeColor">#FFC107</item>
-        <item name="boxStrokeWidth">2dp</item>
+    <style name="mdtp_ActionButton.Text" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="backgroundTint">#00FFFFFF</item> <!--  Makes the time dialog button have no bg  -->
     </style>
+
 
 </resources>

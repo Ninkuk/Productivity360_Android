@@ -1,28 +1,22 @@
 package com.pathtofbla.productivity360.fragments
 
-import android.content.DialogInterface
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pathtofbla.productivity360.R
 import com.pathtofbla.productivity360.Subject
 import com.pathtofbla.productivity360.SubjectsRecyclerAdapter
-import kotlinx.android.synthetic.main.add_subject_dialog.view.*
+import com.pathtofbla.productivity360.Teacher
 import kotlinx.android.synthetic.main.fragment_subjects.*
 
-class SubjectsFragment : Fragment() {
-    private val physics = Subject("PHY 121", "BYENG 120", "11:45 AM", "Dr. Alrifai", "#29B6F6")
-    private val math = Subject("MAT 243", "BYENG 120", "11:45 AM", "Dr. Alrifai", "#FFF176")
-    private val digital = Subject("CSE 120", "BYENG 120", "11:45 AM", "Dr. Alrifai", "#4CAF50")
-    private val cs = Subject("CSE 205", "BYENG 120", "11:45 AM", "Dr. Alrifai", "#5E35B1")
-    private val calc = Subject("MAT 265", "BYENG 120", "11:45 AM", "Dr. Alrifai", "#e53935")
 
-    private val subjects = mutableListOf<Subject>()
+class SubjectsFragment : Fragment() {
+
+    private val subjects = mutableListOf<Subject>() //TODO I/O operation to get subjects
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,44 +27,92 @@ class SubjectsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val fragmentManager = fragmentManager!!
+
         subjectsRecyclerView.layoutManager = LinearLayoutManager(context)
-        val adapter = SubjectsRecyclerAdapter(subjects)
+        val adapter = SubjectsRecyclerAdapter(subjects, fragmentManager)
         subjectsRecyclerView.adapter = adapter
 
         addSubject.setOnClickListener {
-            val builder = MaterialAlertDialogBuilder(context)
+            val newFragment = AddSubjectDialog()
+            newFragment.arguments = null
 
-            val inflater = layoutInflater
-            val alertLayout = inflater.inflate(R.layout.add_subject_dialog, null)
-            builder.setView(alertLayout)
+            val transaction = fragmentManager.beginTransaction()
+            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            transaction.replace(R.id.fragment_container, newFragment).addToBackStack(null)
+                .commit()
+        }
 
-            builder.setTitle("Create a Subject")
-                .setPositiveButton(
-                    "Create",
-                    DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
-                        val className = alertLayout.classNameTextView.text.toString()
-                        val building = alertLayout.buildingTextView.text.toString()
-                        val professor = alertLayout.professorTextView.text.toString()
-                        val time = alertLayout.timeTextView.text.toString()
-                        time.replace("z", "")
+        val bundle = this.arguments
+        if (bundle != null) {
+            if (!bundle.getBoolean("isEdit")) {
+                val className = bundle.getString("className")!!
+                val building = bundle.getString("building")!!
+                val professor = bundle.getString("professor")!!
+                val email = bundle.getString("email")!!
+                val timeStart = bundle.getString("timeStart")!!
+                val timeEnd = bundle.getString("timeEnd")!!
+                val subjectColor = bundle.getInt("subjectColor")!!
+                val subjectTextColor = bundle.getInt("subjectTextColor")!!
 
-                        val subject = Subject(className, building, professor, time, "#e53935")
-                        subjects.add(subject)
-                        adapter.notifyDataSetChanged()
-                    }).setNegativeButton(
-                    "Cancel",
-                    DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
-                    })
+                val subject = Subject(
+                    className,
+                    building,
+                    timeStart,
+                    timeEnd,
+                    Teacher(professor, email),
+                    subjectColor,
+                    subjectTextColor
+                )
 
-            val alert = builder.create()
-            alert.show()
+                subjects.add(subject) //TODO I/O operation to write new subject
+                adapter.notifyDataSetChanged()
+            } else {
+                val oldClassName = bundle.getString("className")!!
+                val oldBuilding = bundle.getString("building")!!
+                val oldProfessor = bundle.getString("professor")!!
+                val oldEmail = bundle.getString("email")!!
+                val oldTimeStart = bundle.getString("timeStart")!!
+                val oldTimeEnd = bundle.getString("timeEnd")!!
+                val oldSubjectColor = bundle.getInt("subjectColor")!!
+                val oldSubjectTextColor = bundle.getInt("subjectTextColor")!!
 
-            val negativeButton = alert.getButton(DialogInterface.BUTTON_NEGATIVE)
-            negativeButton.setBackgroundResource(0)
-            negativeButton.setTextColor(Color.parseColor("#FFFFFF"))
-            val positiveButton = alert.getButton(DialogInterface.BUTTON_POSITIVE)
-            positiveButton.setBackgroundResource(0)
-            positiveButton.setTextColor(Color.parseColor("#FFC107"))
+                val oldSubject = Subject(
+                    oldClassName,
+                    oldBuilding,
+                    oldTimeStart,
+                    oldTimeEnd,
+                    Teacher(oldProfessor, oldEmail),
+                    oldSubjectColor,
+                    oldSubjectTextColor
+                )
+
+                val className = bundle.getString("newClassName")!!
+                val building = bundle.getString("newBuilding")!!
+                val professor = bundle.getString("newProfessor")!!
+                val email = bundle.getString("newEmail")!!
+                val timeStart = bundle.getString("newTimeStart")!!
+                val timeEnd = bundle.getString("newTimeEnd")!!
+                val subjectColor = bundle.getInt("newSubjectColor")!!
+                val subjectTextColor = bundle.getInt("newSubjectTextColor")!!
+
+                val subject = Subject(
+                    className,
+                    building,
+                    timeStart,
+                    timeEnd,
+                    Teacher(professor, email),
+                    subjectColor,
+                    subjectTextColor
+                )
+
+//                TODO change this code when I/O operations to read are available
+//                val index = subjects.indexOf(oldSubject)
+//                subjects[index] = subject
+                subjects.add(subject)
+
+                adapter.notifyDataSetChanged() //TODO I/O operation to edit reward
+            }
         }
     }
 }

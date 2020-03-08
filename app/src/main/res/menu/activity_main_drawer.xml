@@ -12,11 +12,11 @@
             android:title="@string/overview" />
         <item
             android:id="@+id/nav_calendar"
-            android:icon="@drawable/calendar"
+            android:icon="@drawable/ic_calendar_white_24dp"
             android:title="@string/calendar" />
         <item
             android:id="@+id/nav_timetable"
-            android:icon="@drawable/timetable"
+            android:icon="@drawable/ic_timetable_white_24dp"
             android:title="@string/timetable" />
         <item
             android:id="@+id/nav_streaks"
@@ -36,7 +36,7 @@
             android:title="@string/subjects" />
         <item
             android:id="@+id/nav_attendance"
-            android:icon="@drawable/attendance"
+            android:icon="@drawable/ic_event_available_white_24dp"
             android:title="@string/attendance" />
     </group>
 </menu>

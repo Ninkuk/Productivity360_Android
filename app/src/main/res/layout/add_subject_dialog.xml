@@ -1,88 +1,317 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/classNameTextInputLayout"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:paddingStart="10dp">
+
+        <ImageView
+            android:id="@+id/closeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:tint="@android:color/white"
+            app:srcCompat="@drawable/ic_close_black_24dp"
+            android:contentDescription="close button"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+            android:layout_weight="1"
+            android:text="@string/create_a_subject"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/class_name"
-        android:textColorHint="#FFFFFF">
+        android:windowSoftInputMode="adjustResize">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/classNameTextView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_school_white_24dp"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColor="#FFFFFF" />
+            android:orientation="vertical">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/classNameTextInputLayout"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="@string/class_name"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:textColorHint="#FFFFFF">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/buildingTextInputLayout"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/classNameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_school_white_24dp"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="#FFFFFF" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/buildingTextInputLayout"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/building"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:textColorHint="#FFFFFF">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/buildingTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_location_on_white_24dp"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="#FFFFFF" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/professorTextInputLayout"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/professor"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:textColorHint="#FFFFFF">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/professorTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_account_circle_white_24dp"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="#FFFFFF" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailTextInputLayout"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/email"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:textColorHint="#FFFFFF">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_email_white_24dp"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#FFFFFF" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/timeStartLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="11dp"
+                    app:srcCompat="@drawable/ic_access_time_white_24dp"
+                    android:contentDescription="@string/time_drawable"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/start"
+                    android:layout_width="43dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="30dp"
+                    android:layout_weight="1"
+                    android:text="@string/start"
+                    android:textColor="@color/mdtp_white"
+                    android:textSize="18sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/timeStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="@string/pick_a_time"
+                    android:textColor="#9F9F9F"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/timeEndLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/end"
+                    android:layout_width="43dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="39dp"
+                    android:layout_marginEnd="30dp"
+                    android:text="@string/end"
+                    android:textColor="@color/mdtp_white"
+                    android:textSize="18sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/timeEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="@string/pick_a_time"
+                    android:textColor="#9F9F9F"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/chooseSubjectColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/background_color"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical"
+                    android:paddingEnd="10dp">
+
+                    <ImageView
+                        android:id="@+id/subjectColorImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/ic_brightness_1_white_24dp"
+                        android:contentDescription="@string/chosen_subject_color"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/chooseSubjectTextColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/text_color"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:gravity="bottom"
+                    android:orientation="vertical"
+                    android:paddingEnd="10dp">
+
+                    <ImageView
+                        android:id="@+id/subjectTextColorImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/ic_brightness_1_white_24dp"
+                        android:contentDescription="@string/chosen_text_color"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/building"
-        android:textColorHint="#FFFFFF">
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingBottom="15dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/buildingTextView"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/subjectCancel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_location_on_white_24dp"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColor="#FFFFFF" />
+            android:layout_weight="1"
+            android:text="@android:string/cancel"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/professorTextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/professor"
-        android:textColorHint="#FFFFFF">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/professorTextView"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/subjectCreate"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_account_circle_white_24dp"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColor="#FFFFFF" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/timeTextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/class_time"
-        android:textColorHint="#FFFFFF">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/timeTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_access_time_white_24dp"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:inputType="datetime"
-            android:textColor="#FFFFFF" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_weight="1"
+            android:text="@string/create"
+            android:textAlignment="center"
+            android:textColor="@color/colorSecondary"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </LinearLayout>

@@ -43,18 +43,6 @@ class RewardsFragment : Fragment() {
             val alertLayout = inflater.inflate(R.layout.add_reward_dialog, null)
             builder.setView(alertLayout)
 
-            //forces the hint text color to be gold after the user typed in the editText
-            alertLayout.rewardNameTextInputLayout.defaultHintTextColor = ColorStateList(
-                arrayOf(intArrayOf()), intArrayOf(0xFFFFC107.toInt())
-            )
-            alertLayout.rewardPointsTextInputLayout.defaultHintTextColor = ColorStateList(
-                arrayOf(intArrayOf()), intArrayOf(0xFFFFC107.toInt())
-            )
-            alertLayout.rewardDescriptionTextInputLayout.defaultHintTextColor = ColorStateList(
-                arrayOf(intArrayOf()), intArrayOf(0xFFFFC107.toInt())
-            )
-
-
             builder.setTitle("Create a Reward")
                 .setPositiveButton("Create", null)
                 .setNegativeButton(

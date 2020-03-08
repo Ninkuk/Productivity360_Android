@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.pathtofbla.productivity360.fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -27,7 +28,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         //onClick listener for the drawer nav button
         val toggle = ActionBarDrawerToggle(
-            this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+            this,
+            drawer_layout,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
         )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
@@ -58,7 +63,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
-        when(p0.itemId) {
+        when (p0.itemId) {
             R.id.nav_home -> {
                 supportFragmentManager.beginTransaction().replace(
                     R.id.fragment_container,
@@ -108,12 +113,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main, menu)
+        menuInflater.inflate(R.menu.menu_overview, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.settings -> {
                 //TODO
             }
@@ -123,7 +128,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.signout -> {
                 FirebaseAuth.getInstance().signOut()
                 val switchToLogin = Intent(this, Login::class.java)
-                switchToLogin.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                switchToLogin.flags =
+                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(switchToLogin)
             }
         }
@@ -132,9 +138,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     //closes the navigation drawer by pressing the back button
     override fun onBackPressed() {
-        if(drawer_layout.isDrawerOpen(GravityCompat.START)) {
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
-        }else {
+        } else {
             super.onBackPressed()
         }
     }
