@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/productivityPages"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_white_24dp"
+            android:title="@string/overview" />
+        <item
+            android:id="@+id/nav_calendar"
+            android:icon="@drawable/ic_calendar_white_24dp"
+            android:title="@string/calendar" />
+        <item
+            android:id="@+id/nav_timetable"
+            android:icon="@drawable/ic_timetable_white_24dp"
+            android:title="@string/timetable" />
+        <item
+            android:id="@+id/nav_streaks"
+            android:icon="@drawable/ic_timeline_white_24dp"
+            android:title="@string/streaks" />
+        <item
+            android:id="@+id/nav_rewards"
+            android:icon="@drawable/ic_stars_white_24dp"
+            android:title="@string/rewards" />
+    </group>
+    <group
+        android:id="@+id/classPages"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_subjects"
+            android:icon="@drawable/ic_school_white_24dp"
+            android:title="@string/subjects" />
+        <item
+            android:id="@+id/nav_attendance"
+            android:icon="@drawable/ic_event_available_white_24dp"
+            android:title="@string/attendance" />
+    </group>
+</menu>
