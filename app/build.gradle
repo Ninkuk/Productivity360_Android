@@ -54,7 +54,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.4.1' //Firestore
     implementation 'com.google.firebase:firebase-auth:19.2.0' //Auth
 
-    implementation 'com.github.kizitonwose:CalendarView:<latest-version>'
+    implementation 'com.github.kizitonwose:CalendarView:0.3.2'
 }
 
 apply plugin: 'com.google.gms.google-services'

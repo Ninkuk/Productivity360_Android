@@ -15,11 +15,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <CalendarView
+            <com.kizitonwose.calendarview.CalendarView
                 android:id="@+id/calendarView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="?attr/actionBarSize" />
+                android:layout_marginTop="?attr/actionBarSize"
+                app:cv_dayViewResource="@layout/calendar_day_layout" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/homeworkCapsule"
