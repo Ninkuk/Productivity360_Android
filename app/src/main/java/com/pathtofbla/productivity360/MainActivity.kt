@@ -1,18 +1,28 @@
 package com.pathtofbla.productivity360
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import biweekly.Biweekly
+import biweekly.ICalendar
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.pathtofbla.productivity360.fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import java.util.*
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -22,6 +32,48 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
 
         drawerNav()
+
+
+        val filename = "ical_data"
+        lateinit var fileContents: ByteArray
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://canvas.asu.edu")
+            .build()
+
+        val retrofitDownload: FileDownloadClient = retrofit.create(FileDownloadClient::class.java)
+
+        val call: Call<ResponseBody> = retrofitDownload.downloadFile()
+
+        call.enqueue(object : Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(
+                    this@MainActivity,
+                    "Couldn't download calendar data!",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+//                fileContents = response.body()
+
+                Log.d("BRUH", response.body().toString())
+            }
+
+        })
+
+        this.openFileOutput(filename, Context.MODE_PRIVATE).use {
+//            it.write(fileContents)
+        }
+
+
+//        CoroutineScope(IO).launch {
+//            getCalendarData()
+//        }
+//        val ical: ICalendar = Biweekly.parse(this.openFileInput(filename).bufferedReader().readLine()).first()
+//        val event = ical.events[0]
+//        val summary = event.summary.value
+//        Log.d("BRUH", summary)
     }
 
     private fun drawerNav() {

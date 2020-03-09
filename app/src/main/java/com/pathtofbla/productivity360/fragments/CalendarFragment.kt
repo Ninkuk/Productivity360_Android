@@ -26,8 +26,7 @@ class CalendarFragment : Fragment() {
     private var selectedDate: LocalDate? = null
     private lateinit var today: LocalDate
 
-    private val titleSameYearFormatter = DateTimeFormatter.ofPattern("MMMM")
-    private val titleFormatter = DateTimeFormatter.ofPattern("MMM yyyy")
+    private val titleFormatter = DateTimeFormatter.ofPattern("MMMM yyyy")
     private val selectionFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
 //    private val events = mutableMapOf<LocalDate, List<Event>>()
 
@@ -127,11 +126,8 @@ class CalendarFragment : Fragment() {
         }
 
         calendarView.monthScrollListener = {
-
             val actionbar = (activity as AppCompatActivity).supportActionBar
-
             actionbar?.title = titleFormatter.format(it.yearMonth)
-
             // Select the first day of the month when
             // we scroll to a new month.
             selectDate(it.yearMonth.atDay(1))
