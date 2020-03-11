@@ -12,7 +12,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.pathtofbla.productivity360.fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import java.util.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 

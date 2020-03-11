@@ -35,7 +35,7 @@ class SubjectsFragment : Fragment() {
 
         addSubject.setOnClickListener {
             val newFragment = AddSubjectDialog()
-            newFragment.arguments = null
+            newFragment.arguments = null //ensures that the arguments are null when creating
 
             val transaction = fragmentManager.beginTransaction()
             transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
@@ -45,37 +45,15 @@ class SubjectsFragment : Fragment() {
 
         val bundle = this.arguments
         if (bundle != null) {
-            if (!bundle.getBoolean("isEdit")) {
-                val className = bundle.getString("className")!!
-                val building = bundle.getString("building")!!
-                val professor = bundle.getString("professor")!!
-                val email = bundle.getString("email")!!
-                val timeStart = bundle.getString("timeStart")!!
-                val timeEnd = bundle.getString("timeEnd")!!
-                val subjectColor = bundle.getInt("subjectColor")!!
-                val subjectTextColor = bundle.getInt("subjectTextColor")!!
-
-                val subject = Subject(
-                    className,
-                    building,
-                    timeStart,
-                    timeEnd,
-                    Teacher(professor, email),
-                    subjectColor,
-                    subjectTextColor
-                )
-
-                subjects.add(subject) //TODO I/O operation to write new subject
-                adapter.notifyDataSetChanged()
-            } else {
+            if (bundle.getBoolean("isEdit")) {
                 val oldClassName = bundle.getString("className")!!
                 val oldBuilding = bundle.getString("building")!!
                 val oldProfessor = bundle.getString("professor")!!
                 val oldEmail = bundle.getString("email")!!
                 val oldTimeStart = bundle.getString("timeStart")!!
                 val oldTimeEnd = bundle.getString("timeEnd")!!
-                val oldSubjectColor = bundle.getInt("subjectColor")!!
-                val oldSubjectTextColor = bundle.getInt("subjectTextColor")!!
+                val oldSubjectColor = bundle.getInt("subjectColor")
+                val oldSubjectTextColor = bundle.getInt("subjectTextColor")
 
                 val oldSubject = Subject(
                     oldClassName,
@@ -93,8 +71,8 @@ class SubjectsFragment : Fragment() {
                 val email = bundle.getString("newEmail")!!
                 val timeStart = bundle.getString("newTimeStart")!!
                 val timeEnd = bundle.getString("newTimeEnd")!!
-                val subjectColor = bundle.getInt("newSubjectColor")!!
-                val subjectTextColor = bundle.getInt("newSubjectTextColor")!!
+                val subjectColor = bundle.getInt("newSubjectColor")
+                val subjectTextColor = bundle.getInt("newSubjectTextColor")
 
                 val subject = Subject(
                     className,
@@ -112,6 +90,28 @@ class SubjectsFragment : Fragment() {
                 subjects.add(subject)
 
                 adapter.notifyDataSetChanged() //TODO I/O operation to edit reward
+            } else {
+                val className = bundle.getString("className")!!
+                val building = bundle.getString("building")!!
+                val professor = bundle.getString("professor")!!
+                val email = bundle.getString("email")!!
+                val timeStart = bundle.getString("timeStart")!!
+                val timeEnd = bundle.getString("timeEnd")!!
+                val subjectColor = bundle.getInt("subjectColor")
+                val subjectTextColor = bundle.getInt("subjectTextColor")
+
+                val subject = Subject(
+                    className,
+                    building,
+                    timeStart,
+                    timeEnd,
+                    Teacher(professor, email),
+                    subjectColor,
+                    subjectTextColor
+                )
+
+                subjects.add(subject) //TODO I/O operation to write new subject
+                adapter.notifyDataSetChanged()
             }
         }
     }

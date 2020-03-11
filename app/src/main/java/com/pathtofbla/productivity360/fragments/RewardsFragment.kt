@@ -2,7 +2,6 @@ package com.pathtofbla.productivity360.fragments
 
 import android.app.AlertDialog
 import android.content.DialogInterface
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -38,16 +37,16 @@ class RewardsFragment : Fragment() {
         rewardsRecyclerView.adapter = adapter
 
         addReward.setOnClickListener {
-            val builder = MaterialAlertDialogBuilder(context)
+            val builder = MaterialAlertDialogBuilder(activity)
             val inflater = layoutInflater
             val alertLayout = inflater.inflate(R.layout.add_reward_dialog, null)
             builder.setView(alertLayout)
 
-            builder.setTitle("Create a Reward")
+            builder
                 .setPositiveButton("Create", null)
                 .setNegativeButton(
                     "Cancel"
-                ) { dialogInterface: DialogInterface, i: Int ->
+                ) { dialogInterface: DialogInterface, _: Int ->
                 }
 
             val alert = builder.create()
@@ -94,10 +93,10 @@ class RewardsFragment : Fragment() {
             //removes the weird button BG and changes text color
             val negativeButton = alert.getButton(DialogInterface.BUTTON_NEGATIVE)
             negativeButton.setBackgroundResource(0)
-            negativeButton.setTextColor(Color.parseColor("#FFFFFF"))
+            negativeButton.setTextColor(Color.parseColor("#DEFFFFFF"))
             val positiveButton = alert.getButton(DialogInterface.BUTTON_POSITIVE)
             positiveButton.setBackgroundResource(0)
-            positiveButton.setTextColor(Color.parseColor("#FFC107"))
+            positiveButton.setTextColor(Color.parseColor("#FFCA28"))
         }
     }
 }

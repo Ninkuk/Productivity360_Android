@@ -24,7 +24,7 @@
             android:title="@string/streaks" />
         <item
             android:id="@+id/nav_rewards"
-            android:icon="@drawable/ic_stars_white_24dp"
+            android:icon="@drawable/ic_stars_white_20dp"
             android:title="@string/rewards" />
     </group>
     <group
@@ -32,7 +32,7 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/nav_subjects"
-            android:icon="@drawable/ic_school_white_24dp"
+            android:icon="@drawable/ic_school_white_20dp"
             android:title="@string/subjects" />
         <item
             android:id="@+id/nav_attendance"

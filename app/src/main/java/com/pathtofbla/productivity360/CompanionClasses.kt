@@ -10,6 +10,10 @@ open class Task(
     priority: String
 )
 
+class User(
+    val uid: String = ""
+)
+
 class Homework(
     title: String,
     description: String,
@@ -26,7 +30,7 @@ class Homework(
 
 class Subject(
     val title: String,
-    val classroomLocation: String,
+    val building: String,
     val startTime: String,
     val endTime: String,
     val teacher: Teacher,
@@ -47,10 +51,10 @@ class Streak(
     visibilityType: String
 )
 
-class Rewards(
-    title: String,
-    description: String,
-    points: Int
+class Reward(
+    val name: String,
+    val points: Int,
+    val description: String
 )
 
 class Absence(
@@ -65,7 +69,7 @@ class FormatDate {
             return SimpleDateFormat(pattern, Locale.US).format(datetime)
         }
 
-        fun convertToString(pattern: String, datetime: Date): String{
+        fun convertToString(pattern: String, datetime: Date): String {
             return SimpleDateFormat(pattern, Locale.US).format(datetime)
         }
 
