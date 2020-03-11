@@ -38,7 +38,7 @@
                 android:id="@+id/emailTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_email_white_24dp"
+                android:drawableStart="@drawable/ic_email_white_20dp"
                 android:drawablePadding="10dp"
                 android:inputType="textEmailAddress" />
 

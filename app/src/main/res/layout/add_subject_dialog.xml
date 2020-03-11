@@ -18,9 +18,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:contentDescription="@string/close_button"
             android:tint="@android:color/white"
-            app:srcCompat="@drawable/ic_close_black_24dp"
-            android:contentDescription="close button"/>
+            app:srcCompat="@drawable/ic_close_black_24dp" />
 
         <TextView
             android:id="@+id/textView"
@@ -31,7 +31,7 @@
             android:layout_weight="1"
             android:text="@string/create_a_subject"
             android:textColor="@android:color/white"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <ScrollView
@@ -54,15 +54,17 @@
                 android:hint="@string/class_name"
                 android:paddingStart="25dp"
                 android:paddingEnd="25dp"
-                android:textColorHint="#FFFFFF">
+                android:textColorHint="#99FFFFFF">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/classNameTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_school_white_24dp"
+                    android:drawableStart="@drawable/ic_school_white_20dp"
+                    android:drawableTint="@color/colorOnSurface"
                     android:drawablePadding="10dp"
                     android:ems="10"
+                    android:textSize="15sp"
                     android:inputType="textPersonName"
                     android:textColor="#FFFFFF" />
 
@@ -77,15 +79,17 @@
                 android:hint="@string/building"
                 android:paddingStart="25dp"
                 android:paddingEnd="25dp"
-                android:textColorHint="#FFFFFF">
+                android:textColorHint="#99FFFFFF">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/buildingTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_location_on_white_24dp"
+                    android:drawableStart="@drawable/ic_location_on_white_20dp"
+                    android:drawableTint="@color/colorOnSurface"
                     android:drawablePadding="10dp"
                     android:ems="10"
+                    android:textSize="15sp"
                     android:inputType="textPersonName"
                     android:textColor="#FFFFFF" />
 
@@ -100,15 +104,17 @@
                 android:hint="@string/professor"
                 android:paddingStart="25dp"
                 android:paddingEnd="25dp"
-                android:textColorHint="#FFFFFF">
+                android:textColorHint="#99FFFFFF">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/professorTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_account_circle_white_24dp"
+                    android:drawableStart="@drawable/ic_account_circle_white_20dp"
+                    android:drawableTint="@color/colorOnSurface"
                     android:drawablePadding="10dp"
                     android:ems="10"
+                    android:textSize="15sp"
                     android:inputType="textPersonName"
                     android:textColor="#FFFFFF" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -122,15 +128,42 @@
                 android:hint="@string/email"
                 android:paddingStart="25dp"
                 android:paddingEnd="25dp"
-                android:textColorHint="#FFFFFF">
+                android:textColorHint="#99FFFFFF">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/emailTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_email_white_24dp"
+                    android:drawableStart="@drawable/ic_email_white_20dp"
+                    android:drawableTint="@color/colorOnSurface"
                     android:drawablePadding="10dp"
                     android:ems="10"
+                    android:textSize="15sp"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#FFFFFF" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addressTextInputLayout"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/address"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:textColorHint="#99FFFFFF">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addressTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_my_location_black_20dp"
+                    android:drawableTint="@color/colorOnSurface"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:textSize="15sp"
                     android:inputType="textEmailAddress"
                     android:textColor="#FFFFFF" />
 
@@ -151,21 +184,22 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
+                    android:contentDescription="@string/time_drawable"
                     android:paddingStart="4dp"
-                    android:paddingEnd="11dp"
-                    app:srcCompat="@drawable/ic_access_time_white_24dp"
-                    android:contentDescription="@string/time_drawable"/>
+                    android:paddingEnd="15dp"
+                    android:tint="@color/colorOnSurface"
+                    app:srcCompat="@drawable/ic_access_time_white_20dp" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/start"
-                    android:layout_width="43dp"
+                    android:layout_width="65dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="30dp"
                     android:layout_weight="1"
                     android:text="@string/start"
-                    android:textColor="@color/mdtp_white"
-                    android:textSize="18sp" />
+                    android:textColor="@color/colorOnSurface"
+                    android:textSize="15sp" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/timeStart"
@@ -175,7 +209,7 @@
                     android:layout_weight="1"
                     android:text="@string/pick_a_time"
                     android:textColor="#9F9F9F"
-                    android:textSize="18sp" />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -191,28 +225,29 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/end"
-                    android:layout_width="43dp"
+                    android:layout_width="65dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="39dp"
                     android:layout_marginEnd="30dp"
                     android:text="@string/end"
-                    android:textColor="@color/mdtp_white"
-                    android:textSize="18sp" />
+                    android:textColor="@color/colorOnSurface"
+                    android:textSize="15sp" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/timeEnd"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:text="@string/pick_a_time"
                     android:textColor="#9F9F9F"
-                    android:textSize="18sp" />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/backgroundColorLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -225,8 +260,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/background_color"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
+                    android:textColor="@color/colorOnSurface"
+                    android:textSize="15sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -241,13 +276,14 @@
                         android:layout_height="0dp"
                         android:layout_gravity="end"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/ic_brightness_1_white_24dp"
-                        android:contentDescription="@string/chosen_subject_color"/>
+                        android:contentDescription="@string/chosen_subject_color"
+                        app:srcCompat="@drawable/ic_brightness_1_white_24dp" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/textColorLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -260,8 +296,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/text_color"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
+                    android:textColor="@color/colorOnSurface"
+                    android:textSize="15sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -277,8 +313,8 @@
                         android:layout_height="0dp"
                         android:layout_gravity="end"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/ic_brightness_1_white_24dp"
-                        android:contentDescription="@string/chosen_text_color"/>
+                        android:contentDescription="@string/chosen_text_color"
+                        app:srcCompat="@drawable/ic_brightness_1_white_24dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -300,8 +336,8 @@
             android:layout_weight="1"
             android:text="@android:string/cancel"
             android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textColor="@color/colorOnSurface"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/subjectCreate"
@@ -311,7 +347,7 @@
             android:text="@string/create"
             android:textAlignment="center"
             android:textColor="@color/colorSecondary"
-            android:textSize="18sp" />
+            android:textSize="15sp" />
     </LinearLayout>
 
 </LinearLayout>

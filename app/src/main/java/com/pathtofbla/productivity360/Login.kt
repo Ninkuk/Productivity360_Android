@@ -3,9 +3,9 @@ package com.pathtofbla.productivity360
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -25,7 +25,8 @@ class Login : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
             val switchToDashboard = Intent(this, MainActivity::class.java)
-            switchToDashboard.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            switchToDashboard.flags =
+                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(switchToDashboard)
         }
     }
@@ -35,26 +36,27 @@ class Login : AppCompatActivity() {
             val email = emailTextView.text.toString()
             val password = passwordTextView.text.toString()
 
-            if(email.isEmpty()) {
+            if (email.isEmpty()) {
                 emailTextInputLayout.error = "Please enter a valid email address"
                 return@setOnClickListener
-            }else {
+            } else {
                 emailTextInputLayout.error = null
             }
-            if(password.isEmpty()) {
+            if (password.isEmpty()) {
                 passwordTextInputLayout.error = "Please enter a password"
                 return@setOnClickListener
-            }else {
+            } else {
                 passwordTextInputLayout.error = null
             }
 
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
-                .addOnSuccessListener{
+                .addOnSuccessListener {
                     emailTextView.text?.clear()
                     passwordTextView.text?.clear()
 
                     val switchToMain = Intent(this, MainActivity::class.java)
-                    switchToMain.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    switchToMain.flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(switchToMain)
                 }
                 .addOnFailureListener {

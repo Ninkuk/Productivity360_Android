@@ -3,9 +3,9 @@ package com.pathtofbla.productivity360
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_signup.*
@@ -26,16 +26,16 @@ class Signup : AppCompatActivity() {
             val email = emailTextViewSignup.text.toString()
             val password = passwordTextViewSignup.text.toString()
 
-            if(email == "") {
+            if (email == "") {
                 emailTextInputLayoutSignup.error = "Please enter a valid email address"
                 return@setOnClickListener
-            }else {
+            } else {
                 emailTextInputLayoutSignup.error = null
             }
-            if(password == "") {
+            if (password == "") {
                 passwordTextInputLayoutSignup.error = "Please enter a password"
                 return@setOnClickListener
-            }else {
+            } else {
                 passwordTextInputLayoutSignup.error = null
             }
 
@@ -47,7 +47,8 @@ class Signup : AppCompatActivity() {
 
                     userRef.set(user).addOnSuccessListener {
                         val switchToMain = Intent(this, MainActivity::class.java)
-                        switchToMain.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        switchToMain.flags =
+                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(switchToMain)
                     }
                 }
@@ -60,7 +61,8 @@ class Signup : AppCompatActivity() {
                             emailTextInputLayoutSignup.error = "The email is taken. Try Another one"
                         }
                         "The given password is invalid. [ Password should be at least 6 characters ]" -> {
-                            passwordTextInputLayoutSignup.error = "Password should be at least 6 characters"
+                            passwordTextInputLayoutSignup.error =
+                                "Password should be at least 6 characters"
                         }
                         else -> {
                             Toast.makeText(

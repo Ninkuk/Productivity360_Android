@@ -3,12 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="60dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/colorPickerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="25dp"
+            android:paddingBottom="10dp"
+            android:text="@string/textview"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/montserrat" />
+
+    </LinearLayout>
 
     <TableLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp">
 
         <TableRow
             android:layout_width="wrap_content"
@@ -17,213 +41,180 @@
 
             <ImageView
                 android:id="@+id/redColor"
-                android:tag="redColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_red"
                 android:padding="7dp"
+                android:tag="redColor"
                 android:tint="#F44336"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
 
             <ImageView
                 android:id="@+id/pinkColor"
-                android:tag="pinkColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_pink"
                 android:padding="7dp"
+                android:tag="pinkColor"
                 android:tint="#E91E63"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
 
             <ImageView
                 android:id="@+id/purpleColor"
-                android:tag="purpleColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_purple"
                 android:padding="7dp"
+                android:tag="purpleColor"
                 android:tint="#9C27B0"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
 
             <ImageView
                 android:id="@+id/deepPurpleColor"
-                android:tag="deepPurpleColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_deep_purple"
                 android:padding="7dp"
+                android:tag="deepPurpleColor"
                 android:tint="#673AB7"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
 
             <ImageView
                 android:id="@+id/indigoColor"
-                android:tag="indigoColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_indigo"
                 android:padding="7dp"
+                android:tag="indigoColor"
                 android:tint="#3F51B5"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/blueColor"
-                android:tag="blueColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_blue"
                 android:padding="7dp"
+                android:tag="blueColor"
                 android:tint="#2196F3"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
 
             <ImageView
                 android:id="@+id/lightBlueColor"
-                android:tag="lightBlueColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_light_blue"
                 android:padding="7dp"
+                android:tag="lightBlueColor"
                 android:tint="#03A9F4"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
 
             <ImageView
                 android:id="@+id/cyanColor"
-                android:tag="cyanColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_cyan"
                 android:padding="7dp"
+                android:tag="cyanColor"
                 android:tint="#00BCD4"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
 
             <ImageView
                 android:id="@+id/tealColor"
-                android:tag="tealColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_teal"
                 android:padding="7dp"
+                android:tag="tealColor"
                 android:tint="#009688"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
 
             <ImageView
                 android:id="@+id/greenColor"
-                android:tag="greenColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_green"
                 android:padding="7dp"
+                android:tag="greenColor"
                 android:tint="#4CAF50"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/lightGreenColor"
-                android:tag="lightGreenColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_light_green"
                 android:padding="7dp"
+                android:tag="lightGreenColor"
                 android:tint="#8BC34A"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
 
             <ImageView
                 android:id="@+id/limeColor"
-                android:tag="limeColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_lime"
                 android:padding="7dp"
+                android:tag="limeColor"
                 android:tint="#CDDC39"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
 
             <ImageView
                 android:id="@+id/yellowColor"
-                android:tag="yellowColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_yellow"
                 android:padding="7dp"
+                android:tag="yellowColor"
                 android:tint="#FFEB3B"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
 
             <ImageView
                 android:id="@+id/amberColor"
-                android:tag="amberColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_amber"
                 android:padding="7dp"
-                android:tint="#FFC107"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
+                android:tag="amberColor"
+                android:tint="#FFCA28"
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
 
             <ImageView
                 android:id="@+id/orangeColor"
-                android:tag="orangeColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_orange"
                 android:padding="7dp"
+                android:tag="orangeColor"
                 android:tint="#FF9800"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
-
-            <ImageView
-                android:id="@+id/deepOrangeColor"
-                android:tag="deepOrangeColor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="@string/material_deep_orange"
-                android:padding="7dp"
-                android:tint="#FF5722"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
-
-            <ImageView
-                android:id="@+id/brownColor"
-                android:tag="brownColor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="@string/material_brown"
-                android:padding="7dp"
-                android:tint="#795548"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
-
-            <ImageView
-                android:id="@+id/grayColor"
-                android:tag="grayColor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="@string/material_grey"
-                android:padding="7dp"
-                android:tint="#9E9E9E"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
 
         </TableRow>
 
@@ -232,26 +223,59 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/deepOrangeColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/material_deep_orange"
+                android:padding="7dp"
+                android:tag="deepOrangeColor"
+                android:tint="#FF5722"
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
+
+            <ImageView
+                android:id="@+id/brownColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/material_brown"
+                android:padding="7dp"
+                android:tag="brownColor"
+                android:tint="#795548"
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
+
+            <ImageView
+                android:id="@+id/grayColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/material_grey"
+                android:padding="7dp"
+                android:tag="grayColor"
+                android:tint="#9E9E9E"
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
+
+            <ImageView
                 android:id="@+id/blueGrayColor"
-                android:tag="blueGrayColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/material_blue_gray"
                 android:padding="7dp"
+                android:tag="blueGrayColor"
                 android:tint="#607D8B"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
 
             <ImageView
                 android:id="@+id/whiteColor"
-                android:tag="whiteColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/white"
                 android:padding="7dp"
+                android:tag="whiteColor"
                 android:tint="#FFFFFF"
-                app:srcCompat="@drawable/ic_brightness_1_white_36dp" />
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
 
 
         </TableRow>
@@ -260,8 +284,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:paddingStart="25dp"
+        android:paddingEnd="22dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/hexTextInputLayout"
@@ -269,25 +295,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/hex"
-            android:textColorHint="#FFFFFF">
+            android:textColorHint="#99FFFFFF">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/hexTextInputEditText"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <ImageView
-            android:id="@+id/chosenColor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_brightness_1_white_36dp"
-            android:contentDescription="@string/chosen_color"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/chosenColor"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="end"
+                android:layout_weight="1"
+                android:contentDescription="@string/chosen_color"
+                app:srcCompat="@drawable/ic_brightness_1_white_48dp" />
+        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>
