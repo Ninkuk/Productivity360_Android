@@ -24,8 +24,9 @@
                 android:id="@+id/className"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:text="@string/class_name"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorOnSurface"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -59,7 +60,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/no"
-                        android:textColor="@color/red"/>
+                        android:textColor="@color/red" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/yesButton"
@@ -67,7 +68,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/yes"
-                        android:textColor="@color/green"/>
+                        android:textColor="@color/green" />
 
                 </LinearLayout>
 

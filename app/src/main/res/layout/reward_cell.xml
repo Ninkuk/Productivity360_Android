@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/goal_1"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorOnSurface"
                 android:textSize="18sp" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/_6900"
                 android:textAlignment="textEnd"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorOnSurface"
                 android:textStyle="bold" />
         </LinearLayout>
 

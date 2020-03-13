@@ -7,12 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.pathtofbla.productivity360.R
 
-class StreaksFragment: Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+class StreaksFragment : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_streaks, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        
+
     }
 }

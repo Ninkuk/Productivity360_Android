@@ -14,6 +14,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.common.base.Ascii.toUpperCase
 import com.pathtofbla.productivity360.R
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog
 import kotlinx.android.synthetic.main.add_subject_dialog.*
@@ -55,7 +56,7 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
 
         val bundle = this.arguments
         if (bundle == null) {
-            createButton()
+            createMode()
         } else {
             editMode(bundle)
         }
@@ -64,12 +65,176 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
     //override the onClick method so that I only have to write one onclick code for all the colors
     override fun onClick(view: View?) {
         lastColorClicked = ImageViewCompat.getImageTintList(view as ImageView)!!.defaultColor
-        val hexString = "#" + Integer.toHexString(lastColorClicked).removeRange(0, 2).toUpperCase()
+        val hexString = "#" + toUpperCase(Integer.toHexString(lastColorClicked).removeRange(0, 2))
         alertLayout.hexTextInputEditText.setText(hexString)
         alertLayout.chosenColor.setColorFilter(lastColorClicked)
 
         removeCheckmarks() //unchecks any checked color
-        view.setImageResource(R.drawable.ic_check_circle_black_36dp) //adds a check mark to the clicked image
+        view.setImageResource(R.drawable.ic_check_circle_black_48dp) //adds a check mark to the clicked image
+    }
+
+    private fun timeStart() {
+        timeStartLayout.setOnClickListener {
+            val now = Calendar.getInstance()
+            val timePickerDialog = TimePickerDialog.newInstance(
+                this,
+                now.get(Calendar.HOUR_OF_DAY),
+                now.get(Calendar.MINUTE),
+                false
+            )
+            timePickerDialog.isThemeDark = true
+            timePickerDialog.setAccentColor("#42A5F5")
+            timePickerDialog.setOkColor("#FFCA28")
+            timePickerDialog.setCancelColor("#DEFFFFFF")
+            timePickerDialog.title = "Class Starting Time"
+            timePickerDialog.show(fragmentManager!!, "DatePicker")
+        }
+    }
+
+    private fun timeEnd() {
+        timeEndLayout.setOnClickListener {
+            val now = Calendar.getInstance()
+            val timePickerDialog = TimePickerDialog.newInstance(
+                this,
+                now.get(Calendar.HOUR_OF_DAY),
+                now.get(Calendar.MINUTE),
+                false
+            )
+            timePickerDialog.isThemeDark = true
+            timePickerDialog.setAccentColor("#42A5F5")
+            timePickerDialog.setOkColor("#FFCA28")
+            timePickerDialog.setCancelColor("#DEFFFFFF")
+            timePickerDialog.title = "Class Ending Time"
+            timePickerDialog.show(fragmentManager!!, "DatePicker")
+
+            it.timeStart
+        }
+    }
+
+    override fun onTimeSet(view: TimePickerDialog?, hourOfDay: Int, minute: Int, second: Int) {
+
+        //adds a 0 to the tens digit place if minute is less than 10
+        val minuteWithZero = if (minute < 10) {
+            "0$minute"
+        } else {
+            minute.toString()
+        }
+
+        //converts 24 hour notation to 12 hour
+        val time = if (hourOfDay >= 13) {
+            "${hourOfDay - 12}:$minuteWithZero PM"
+        } else {
+            "$hourOfDay:$minuteWithZero AM"
+        }
+
+        //checks which textView to change
+        if (view!!.title == "Class Starting Time") {
+            timeStart.text = time
+            return
+        }
+
+        timeEnd.text = time
+    }
+
+    private fun chooseSubjectColor() {
+        subjectColorImage.setColorFilter(0xFFF44336.toInt()) //sets the red color as the default bg
+
+        backgroundColorLayout.setOnClickListener {
+            val colorBuilder = MaterialAlertDialogBuilder(context)
+            val inflater = layoutInflater
+            alertLayout = inflater.inflate(R.layout.color_picker_dialog, null)
+            colorBuilder.setView(alertLayout)
+
+            alertLayout.colorPickerTitle.text = "Choose a Background Color"
+            lastColorClicked = currentSubjectColor
+            alertLayout.chosenColor.setColorFilter(currentSubjectColor)
+            val hexString =
+                "#" + toUpperCase(Integer.toHexString(currentSubjectColor).removeRange(0, 2))
+            alertLayout.hexTextInputEditText.setText(hexString)
+            colorsOnClickSetup(alertLayout)
+
+            colorBuilder.setPositiveButton(
+                "Choose"
+            ) { dialog: DialogInterface?, which: Int ->
+                subjectColorImage.setColorFilter(lastColorClicked)
+                currentSubjectColor = lastColorClicked
+            }.setNegativeButton(
+                "Cancel"
+            ) { dialogInterface: DialogInterface, _: Int ->
+                lastColorClicked = currentSubjectColor
+            }
+
+            alertLayout.hexTextInputEditText.addTextChangedListener {
+                try {
+                    val hexColor = Color.parseColor(it.toString())
+                    alertLayout.chosenColor.setColorFilter(hexColor)
+                    lastColorClicked = hexColor
+                    removeCheckmarks()
+                } catch (ignored: Exception) {
+
+                }
+            }
+
+            val alert = colorBuilder.create()
+            alert.show()
+
+            //changes the negative and positive buttons color
+            val negativeButton = alert.getButton(DialogInterface.BUTTON_NEGATIVE)
+            negativeButton.setBackgroundResource(0)
+            negativeButton.setTextColor(Color.parseColor("#DEFFFFFF"))
+            val positiveButton = alert.getButton(DialogInterface.BUTTON_POSITIVE)
+            positiveButton.setBackgroundResource(0)
+            positiveButton.setTextColor(Color.parseColor("#FFCA28"))
+        }
+    }
+
+    private fun chooseSubjectTextColor() {
+        textColorLayout.setOnClickListener {
+            val colorBuilder = MaterialAlertDialogBuilder(context)
+            val inflater = layoutInflater
+            alertLayout = inflater.inflate(R.layout.color_picker_dialog, null)
+            colorBuilder.setView(alertLayout)
+
+            alertLayout.colorPickerTitle.text = "Choose a Text Color"
+            lastColorClicked = currentSubjectTextColor
+            alertLayout.chosenColor.setColorFilter(currentSubjectTextColor)
+            val hexString =
+                "#" + toUpperCase(Integer.toHexString(currentSubjectTextColor).removeRange(0, 2))
+            alertLayout.hexTextInputEditText.setText(hexString)
+            colorsOnClickSetup(alertLayout)
+
+            colorBuilder.setPositiveButton(
+                "Choose"
+            ) { dialog: DialogInterface?, which: Int ->
+                subjectTextColorImage.setColorFilter(lastColorClicked)
+                currentSubjectTextColor = lastColorClicked
+            }.setNegativeButton(
+                "Cancel"
+            ) { dialogInterface: DialogInterface, _: Int ->
+                lastColorClicked = currentSubjectTextColor
+            }
+
+            alertLayout.hexTextInputEditText.addTextChangedListener {
+                try {
+                    val hexColor = Color.parseColor(it.toString())
+                    alertLayout.chosenColor.setColorFilter(hexColor)
+                    lastColorClicked = hexColor
+                    removeCheckmarks()
+                } catch (ignored: Exception) {
+                }
+            }
+
+            val alert = colorBuilder.create()
+            alert.show()
+
+            //changes the negative and positive buttons color
+            val negativeButton = alert.getButton(DialogInterface.BUTTON_NEGATIVE)
+            negativeButton.setBackgroundResource(0)
+            negativeButton.setTextColor(Color.parseColor("#DEFFFFFF"))
+            val positiveButton = alert.getButton(DialogInterface.BUTTON_POSITIVE)
+            positiveButton.setBackgroundResource(0)
+            positiveButton.setTextColor(Color.parseColor("#FFCA28"))
+        }
     }
 
     //by passing "this" to the onClickListener, Android will call the onClick method I overrode
@@ -96,141 +261,34 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
         view.whiteColor.setOnClickListener(this)
     }
 
-    private fun timeStart() {
-        timeStartLayout.setOnClickListener {
-            val now = Calendar.getInstance()
-            val timePickerDialog = TimePickerDialog.newInstance(
-                this,
-                now.get(Calendar.HOUR_OF_DAY),
-                now.get(Calendar.MINUTE),
-                false
-            )
-            timePickerDialog.isThemeDark = true
-            timePickerDialog.setAccentColor("#0D47A1")
-            timePickerDialog.setOkColor("#FFC107")
-            timePickerDialog.setCancelColor("#FFC107")
-            timePickerDialog.title = "Class Starting Time"
-            timePickerDialog.show(fragmentManager!!, "DatePicker")
-        }
-    }
+    //removes all checkMarks
+    private fun removeCheckmarks() {
+        //The id of each color
+        val colorsTagList = listOf(
+            "redColor",
+            "pinkColor",
+            "purpleColor",
+            "deepPurpleColor",
+            "indigoColor",
+            "blueColor",
+            "lightBlueColor",
+            "cyanColor",
+            "tealColor",
+            "greenColor",
+            "lightGreenColor",
+            "limeColor",
+            "yellowColor",
+            "amberColor",
+            "orangeColor",
+            "deepOrangeColor",
+            "brownColor",
+            "grayColor",
+            "blueGrayColor",
+            "whiteColor"
+        )
 
-    private fun timeEnd() {
-        timeEndLayout.setOnClickListener {
-            val now = Calendar.getInstance()
-            val timePickerDialog = TimePickerDialog.newInstance(
-                this,
-                now.get(Calendar.HOUR_OF_DAY),
-                now.get(Calendar.MINUTE),
-                false
-            )
-            timePickerDialog.isThemeDark = true
-            timePickerDialog.setAccentColor("#0D47A1")
-            timePickerDialog.setOkColor("#FFC107")
-            timePickerDialog.setCancelColor("#FFC107")
-            timePickerDialog.title = "Class Ending Time"
-            timePickerDialog.show(fragmentManager!!, "DatePicker")
-
-            it.timeStart
-        }
-    }
-
-    private fun chooseSubjectColor() {
-        subjectColorImage.setColorFilter(0xFFF44336.toInt()) //sets the red color as the default bg
-
-        chooseSubjectColor.setOnClickListener {
-            val colorBuilder = MaterialAlertDialogBuilder(context)
-            val inflater = layoutInflater
-            alertLayout = inflater.inflate(R.layout.color_picker_dialog, null)
-            colorBuilder.setView(alertLayout)
-
-            lastColorClicked = currentSubjectColor
-            alertLayout.chosenColor.setColorFilter(currentSubjectColor)
-            val hexString =
-                "#" + Integer.toHexString(currentSubjectColor).removeRange(0, 2).toUpperCase()
-            alertLayout.hexTextInputEditText.setText(hexString)
-            colorsOnClickSetup(alertLayout)
-
-            colorBuilder.setTitle("Choose a Background Color")
-                .setPositiveButton(
-                    "Choose"
-                ) { dialog: DialogInterface?, which: Int ->
-                    subjectColorImage.setColorFilter(lastColorClicked)
-                    currentSubjectColor = lastColorClicked
-                }.setNegativeButton(
-                    "Cancel"
-                ) { dialogInterface: DialogInterface, i: Int ->
-                    lastColorClicked = currentSubjectColor
-                }
-
-            alertLayout.hexTextInputEditText.addTextChangedListener {
-                try {
-                    val hexColor = Color.parseColor(it.toString())
-                    alertLayout.chosenColor.setColorFilter(hexColor)
-                    lastColorClicked = hexColor
-                    removeCheckmarks()
-                } catch (e: Exception) {
-                }
-            }
-
-            val alert = colorBuilder.create()
-            alert.show()
-
-            //changes the negative and positive buttons color
-            val negativeButton = alert.getButton(DialogInterface.BUTTON_NEGATIVE)
-            negativeButton.setBackgroundResource(0)
-            negativeButton.setTextColor(Color.parseColor("#FFFFFF"))
-            val positiveButton = alert.getButton(DialogInterface.BUTTON_POSITIVE)
-            positiveButton.setBackgroundResource(0)
-            positiveButton.setTextColor(Color.parseColor("#FFC107"))
-        }
-    }
-
-    private fun chooseSubjectTextColor() {
-        chooseSubjectTextColor.setOnClickListener {
-            val colorBuilder = MaterialAlertDialogBuilder(context)
-            val inflater = layoutInflater
-            alertLayout = inflater.inflate(R.layout.color_picker_dialog, null)
-            colorBuilder.setView(alertLayout)
-
-            lastColorClicked = currentSubjectTextColor
-            alertLayout.chosenColor.setColorFilter(currentSubjectTextColor)
-            val hexString =
-                "#" + Integer.toHexString(currentSubjectTextColor).removeRange(0, 2).toUpperCase()
-            alertLayout.hexTextInputEditText.setText(hexString)
-            colorsOnClickSetup(alertLayout)
-
-            colorBuilder.setTitle("Choose a Text Color")
-                .setPositiveButton(
-                    "Choose"
-                ) { dialog: DialogInterface?, which: Int ->
-                    subjectTextColorImage.setColorFilter(lastColorClicked)
-                    currentSubjectTextColor = lastColorClicked
-                }.setNegativeButton(
-                    "Cancel"
-                ) { dialogInterface: DialogInterface, i: Int ->
-                    lastColorClicked = currentSubjectTextColor
-                }
-
-            alertLayout.hexTextInputEditText.addTextChangedListener {
-                try {
-                    val hexColor = Color.parseColor(it.toString())
-                    alertLayout.chosenColor.setColorFilter(hexColor)
-                    lastColorClicked = hexColor
-                    removeCheckmarks()
-                } catch (e: Exception) {
-                }
-            }
-
-            val alert = colorBuilder.create()
-            alert.show()
-
-            //changes the negative and positive buttons color
-            val negativeButton = alert.getButton(DialogInterface.BUTTON_NEGATIVE)
-            negativeButton.setBackgroundResource(0)
-            negativeButton.setTextColor(Color.parseColor("#FFFFFF"))
-            val positiveButton = alert.getButton(DialogInterface.BUTTON_POSITIVE)
-            positiveButton.setBackgroundResource(0)
-            positiveButton.setTextColor(Color.parseColor("#FFC107"))
+        colorsTagList.forEach {
+            (alertLayout.findViewWithTag<View>(it) as ImageView).setImageResource(R.drawable.ic_brightness_1_white_48dp)
         }
     }
 
@@ -245,7 +303,7 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
         transaction?.replace(R.id.fragment_container, newFragment)?.commit()
     }
 
-    private fun createButton() {
+    private fun createMode() {
         subjectCreate.setOnClickListener {
             val className = classNameTextView.text.toString()
             val building = buildingTextView.text.toString()
@@ -254,40 +312,40 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
             val timeStart = timeStart.text.toString()
             val timeEnd = timeEnd.text.toString()
 
-            if(className.isEmpty()) {
+            if (className.isEmpty()) {
                 classNameTextView.error = "This field is required"
                 return@setOnClickListener
-            }else {
+            } else {
                 classNameTextView.error = null
             }
 
-            if(building.isEmpty()) {
+            if (building.isEmpty()) {
                 buildingTextView.error = "This field is required"
                 return@setOnClickListener
-            }else {
+            } else {
                 buildingTextView.error = null
             }
 
-            if(professor.isEmpty()) {
+            if (professor.isEmpty()) {
                 professorTextView.error = "This field is required"
                 return@setOnClickListener
-            }else {
+            } else {
                 professorTextView.error = null
             }
 
-            if(email.isEmpty()) {
+            if (email.isEmpty()) {
                 emailTextView.error = "This field is required"
                 return@setOnClickListener
-            }else {
+            } else {
                 emailTextView.error = null
             }
 
-            if(timeStart == "Pick a time") {
+            if (timeStart == "Pick a time") {
                 Toast.makeText(context, "Please choose a starting time", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 
-            if(timeEnd == "Pick a time") {
+            if (timeEnd == "Pick a time") {
                 Toast.makeText(context, "Please choose an ending time", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
@@ -340,40 +398,40 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
             val timeStart = timeStart.text.toString()
             val timeEnd = timeEnd.text.toString()
 
-            if(className.isEmpty()) {
+            if (className.isEmpty()) {
                 classNameTextView.error = "This field is required"
                 return@setOnClickListener
-            }else {
+            } else {
                 classNameTextView.error = null
             }
 
-            if(building.isEmpty()) {
+            if (building.isEmpty()) {
                 buildingTextView.error = "This field is required"
                 return@setOnClickListener
-            }else {
+            } else {
                 buildingTextView.error = null
             }
 
-            if(professor.isEmpty()) {
+            if (professor.isEmpty()) {
                 professorTextView.error = "This field is required"
                 return@setOnClickListener
-            }else {
+            } else {
                 professorTextView.error = null
             }
 
-            if(email.isEmpty()) {
+            if (email.isEmpty()) {
                 emailTextView.error = "This field is required"
                 return@setOnClickListener
-            }else {
+            } else {
                 emailTextView.error = null
             }
 
-            if(timeStart == "Pick a time") {
+            if (timeStart == "Pick a time") {
                 Toast.makeText(context, "Please choose a starting time", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 
-            if(timeEnd == "Pick a time") {
+            if (timeEnd == "Pick a time") {
                 Toast.makeText(context, "Please choose an ending time", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
@@ -403,61 +461,5 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
             transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
             transaction.replace(R.id.fragment_container, newFragment).commit()
         }
-    }
-
-    //removes all checkMarks
-    private fun removeCheckmarks() {
-        //The id of each color
-        val colorsTagList = listOf(
-            "redColor",
-            "pinkColor",
-            "purpleColor",
-            "deepPurpleColor",
-            "indigoColor",
-            "blueColor",
-            "lightBlueColor",
-            "cyanColor",
-            "tealColor",
-            "greenColor",
-            "lightGreenColor",
-            "limeColor",
-            "yellowColor",
-            "amberColor",
-            "orangeColor",
-            "deepOrangeColor",
-            "brownColor",
-            "grayColor",
-            "blueGrayColor",
-            "whiteColor"
-        )
-
-        colorsTagList.forEach {
-            (alertLayout.findViewWithTag<View>(it) as ImageView).setImageResource(R.drawable.ic_brightness_1_white_36dp)
-        }
-    }
-
-    override fun onTimeSet(view: TimePickerDialog?, hourOfDay: Int, minute: Int, second: Int) {
-
-        //adds a 0 to the tens digit place if minute is less than 10
-        val minuteWithZero = if (minute < 10) {
-            "0$minute"
-        } else {
-            minute.toString()
-        }
-
-        //converts 24 hour notation to 12 hour
-        val time = if (hourOfDay >= 13) {
-            "${hourOfDay - 12}:$minuteWithZero PM"
-        } else {
-            "$hourOfDay:$minuteWithZero AM"
-        }
-
-        //checks which textView to change
-        if (view!!.title == "Class Starting Time") {
-            timeStart.text = time
-            return
-        }
-
-        timeEnd.text = time
     }
 }

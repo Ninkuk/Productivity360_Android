@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="15dp"
-    android:backgroundTint="@color/colorSecondary">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/colorSecondary"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="60dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/createReward"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="25dp"
+            android:paddingBottom="10dp"
+            android:text="@string/create_a_reward"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/montserrat" />
+
+    </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/rewardNameTextInputLayout"
@@ -13,17 +36,22 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/reward_name"
-        android:textColorHint="#FFFFFF">
+        android:textColorHint="#99FFFFFF"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/rewardNameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_stars_white_24dp"
-            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_stars_white_20dp"
+            android:drawablePadding="7dp"
+            android:drawableTint="@color/colorOnSurface"
             android:ems="10"
             android:inputType="textPersonName"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/colorOnSurface"
+            android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -33,17 +61,21 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/points_needed"
-        android:textColorHint="#FFFFFF">
+        android:textColorHint="#99FFFFFF"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/rewardPointsTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_attach_money_white_24dp"
-            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_attach_money_white_20dp"
+            android:drawablePadding="7dp"
+            android:drawableTint="@color/colorOnSurface"
             android:ems="10"
             android:inputType="number"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/colorOnSurface"
+            android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -52,16 +84,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/description"
-        android:textColorHint="#FFFFFF">
+        android:textColorHint="#99FFFFFF"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/rewardDescriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_edit_white_24dp"
-            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_edit_white_20p"
+            android:drawablePadding="7dp"
+            android:drawableTint="@color/colorOnSurface"
             android:ems="10"
             android:inputType="textMultiLine"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/colorOnSurface"
+            android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>
