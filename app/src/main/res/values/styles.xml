@@ -25,7 +25,8 @@
     </style>
 
     <style name="mdtp_ActionButton.Text" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
-        <item name="backgroundTint">#00FFFFFF</item> <!--  Makes the time dialog button have no bg  -->
+        <item name="backgroundTint">#00FFFFFF
+        </item> <!--  Makes the time dialog button have no bg  -->
     </style>
 
 

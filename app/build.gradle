@@ -49,12 +49,19 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.0-alpha05' //Material Library
     implementation 'com.wdullaer:materialdatetimepicker:4.2.3' //Material DateTime Picker
 
+    implementation 'com.github.kizitonwose:CalendarView:0.3.2' //CalendarView
+
     //Firebase Dependencies
     implementation 'com.google.firebase:firebase-analytics:17.2.3' //Analytics
     implementation 'com.google.firebase:firebase-firestore:21.4.1' //Firestore
     implementation 'com.google.firebase:firebase-auth:19.2.0' //Auth
 
-    implementation 'com.github.kizitonwose:CalendarView:0.3.2'
+    implementation 'net.sf.biweekly:biweekly:0.6.3' //Biweekly iCal Parse
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0"
+
+    implementation 'com.squareup.retrofit2:retrofit:2.7.2'
 }
 
 apply plugin: 'com.google.gms.google-services'
