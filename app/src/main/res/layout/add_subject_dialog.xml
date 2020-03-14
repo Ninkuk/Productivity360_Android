@@ -31,7 +31,8 @@
             android:layout_weight="1"
             android:text="@string/create_a_subject"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <ScrollView
@@ -61,12 +62,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_school_white_20dp"
-                    android:drawableTint="@color/colorOnSurface"
                     android:drawablePadding="10dp"
+                    android:drawableTint="@color/colorOnSurface"
                     android:ems="10"
-                    android:textSize="15sp"
                     android:inputType="textPersonName"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,12 +87,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_location_on_white_20dp"
-                    android:drawableTint="@color/colorOnSurface"
                     android:drawablePadding="10dp"
+                    android:drawableTint="@color/colorOnSurface"
                     android:ems="10"
-                    android:textSize="15sp"
                     android:inputType="textPersonName"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,12 +112,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_account_circle_white_20dp"
-                    android:drawableTint="@color/colorOnSurface"
                     android:drawablePadding="10dp"
+                    android:drawableTint="@color/colorOnSurface"
                     android:ems="10"
-                    android:textSize="15sp"
                     android:inputType="textPersonName"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -135,12 +136,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_email_white_20dp"
-                    android:drawableTint="@color/colorOnSurface"
                     android:drawablePadding="10dp"
+                    android:drawableTint="@color/colorOnSurface"
                     android:ems="10"
-                    android:textSize="15sp"
                     android:inputType="textEmailAddress"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -160,12 +161,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_my_location_black_20dp"
-                    android:drawableTint="@color/colorOnSurface"
                     android:drawablePadding="10dp"
+                    android:drawableTint="@color/colorOnSurface"
                     android:ems="10"
-                    android:textSize="15sp"
                     android:inputType="textEmailAddress"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -255,67 +256,24 @@
                 android:paddingStart="25dp"
                 android:paddingEnd="25dp">
 
+                <ImageView
+                    android:id="@+id/subjectColorImage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/chosen_subject_color"
+                    app:srcCompat="@drawable/ic_brightness_1_white_24dp" />
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/chooseSubjectColor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="7"
                     android:text="@string/background_color"
                     android:textColor="@color/colorOnSurface"
                     android:textSize="15sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:orientation="vertical"
-                    android:paddingEnd="10dp">
-
-                    <ImageView
-                        android:id="@+id/subjectColorImage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_gravity="end"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/chosen_subject_color"
-                        app:srcCompat="@drawable/ic_brightness_1_white_24dp" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/textColorLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingStart="25dp"
-                android:paddingEnd="25dp">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/chooseSubjectTextColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/text_color"
-                    android:textColor="@color/colorOnSurface"
-                    android:textSize="15sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:gravity="bottom"
-                    android:orientation="vertical"
-                    android:paddingEnd="10dp">
-
-                    <ImageView
-                        android:id="@+id/subjectTextColorImage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_gravity="end"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/chosen_text_color"
-                        app:srcCompat="@drawable/ic_brightness_1_white_24dp" />
-                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>

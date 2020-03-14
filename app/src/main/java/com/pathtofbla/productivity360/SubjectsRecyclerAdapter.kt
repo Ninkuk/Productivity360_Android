@@ -24,7 +24,7 @@ class SubjectsRecyclerAdapter(
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.subject_cells, parent, false)
         val subject =
-            Subject("", "", "", "", Teacher("", ""), 0, 0)
+            Subject("", "", "","", "", Teacher("", ""), 0, 0)
 
         return SubjectsViewHolder(view, subject, subjects, this, fragmentManager)
     }
@@ -76,6 +76,7 @@ class SubjectsViewHolder(
                             |Building: ${subject.building}
                             |Professor: ${subject.teacher.name}
                             |E-mail: ${subject.teacher.email}
+                            |Address: ${subject.address}
                             |Start Time: ${subject.startTime}
                             |End Time: ${subject.endTime}
                         """.trimMargin()
@@ -89,6 +90,7 @@ class SubjectsViewHolder(
                 bundle.putString("building", subject.building)
                 bundle.putString("professor", subject.teacher.name)
                 bundle.putString("email", subject.teacher.email)
+                bundle.putString("address", subject.address)
                 bundle.putString("timeStart", subject.startTime)
                 bundle.putString("timeEnd", subject.endTime)
                 bundle.putInt("subjectColor", subject.backgroundColor)

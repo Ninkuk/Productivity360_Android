@@ -27,7 +27,7 @@ import java.util.*
 class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTimeSetListener {
     private var lastColorClicked: Int = 0xFFFFFFFF.toInt()
     private var currentSubjectColor: Int = 0xFFF44336.toInt() //Red
-    private var currentSubjectTextColor: Int = 0xFFFFFFFF.toInt()
+    private var subjectTextColor: Int = 0xFFFFFFFF.toInt()
     lateinit var alertLayout: View
 
     override fun onCreateView(
@@ -48,7 +48,6 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
         timeStart()
         timeEnd()
         chooseSubjectColor()
-        chooseSubjectTextColor()
 
         subjectCancel.setOnClickListener {
             cancel()
@@ -60,17 +59,6 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
         } else {
             editMode(bundle)
         }
-    }
-
-    //override the onClick method so that I only have to write one onclick code for all the colors
-    override fun onClick(view: View?) {
-        lastColorClicked = ImageViewCompat.getImageTintList(view as ImageView)!!.defaultColor
-        val hexString = "#" + toUpperCase(Integer.toHexString(lastColorClicked).removeRange(0, 2))
-        alertLayout.hexTextInputEditText.setText(hexString)
-        alertLayout.chosenColor.setColorFilter(lastColorClicked)
-
-        removeCheckmarks() //unchecks any checked color
-        view.setImageResource(R.drawable.ic_check_circle_black_48dp) //adds a check mark to the clicked image
     }
 
     private fun timeStart() {
@@ -158,6 +146,7 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
             ) { dialog: DialogInterface?, which: Int ->
                 subjectColorImage.setColorFilter(lastColorClicked)
                 currentSubjectColor = lastColorClicked
+                chooseSubjectTextColor()
             }.setNegativeButton(
                 "Cancel"
             ) { dialogInterface: DialogInterface, _: Int ->
@@ -189,51 +178,15 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
     }
 
     private fun chooseSubjectTextColor() {
-        textColorLayout.setOnClickListener {
-            val colorBuilder = MaterialAlertDialogBuilder(context)
-            val inflater = layoutInflater
-            alertLayout = inflater.inflate(R.layout.color_picker_dialog, null)
-            colorBuilder.setView(alertLayout)
+        val hex = Integer.toHexString(currentSubjectColor)
+        val red = Integer.parseInt(hex.substring(0, 2), 16)
+        val green = Integer.parseInt(hex.substring(2, 4), 16)
+        val blue = Integer.parseInt(hex.substring(4, 6), 16)
 
-            alertLayout.colorPickerTitle.text = "Choose a Text Color"
-            lastColorClicked = currentSubjectTextColor
-            alertLayout.chosenColor.setColorFilter(currentSubjectTextColor)
-            val hexString =
-                "#" + toUpperCase(Integer.toHexString(currentSubjectTextColor).removeRange(0, 2))
-            alertLayout.hexTextInputEditText.setText(hexString)
-            colorsOnClickSetup(alertLayout)
-
-            colorBuilder.setPositiveButton(
-                "Choose"
-            ) { dialog: DialogInterface?, which: Int ->
-                subjectTextColorImage.setColorFilter(lastColorClicked)
-                currentSubjectTextColor = lastColorClicked
-            }.setNegativeButton(
-                "Cancel"
-            ) { dialogInterface: DialogInterface, _: Int ->
-                lastColorClicked = currentSubjectTextColor
-            }
-
-            alertLayout.hexTextInputEditText.addTextChangedListener {
-                try {
-                    val hexColor = Color.parseColor(it.toString())
-                    alertLayout.chosenColor.setColorFilter(hexColor)
-                    lastColorClicked = hexColor
-                    removeCheckmarks()
-                } catch (ignored: Exception) {
-                }
-            }
-
-            val alert = colorBuilder.create()
-            alert.show()
-
-            //changes the negative and positive buttons color
-            val negativeButton = alert.getButton(DialogInterface.BUTTON_NEGATIVE)
-            negativeButton.setBackgroundResource(0)
-            negativeButton.setTextColor(Color.parseColor("#DEFFFFFF"))
-            val positiveButton = alert.getButton(DialogInterface.BUTTON_POSITIVE)
-            positiveButton.setBackgroundResource(0)
-            positiveButton.setTextColor(Color.parseColor("#FFCA28"))
+        subjectTextColor = if((red*0.299 + green*0.587 + blue*0.114) > 186) {
+            0xFF000000.toInt()
+        } else {
+            0xFFFFFFFF.toInt()
         }
     }
 
@@ -259,6 +212,17 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
         view.grayColor.setOnClickListener(this)
         view.blueGrayColor.setOnClickListener(this)
         view.whiteColor.setOnClickListener(this)
+    }
+
+    //override the onClick method so that I only have to write one onclick code for all the colors
+    override fun onClick(view: View?) {
+        lastColorClicked = ImageViewCompat.getImageTintList(view as ImageView)!!.defaultColor
+        val hexString = "#" + toUpperCase(Integer.toHexString(lastColorClicked).removeRange(0, 2))
+        alertLayout.hexTextInputEditText.setText(hexString)
+        alertLayout.chosenColor.setColorFilter(lastColorClicked)
+
+        removeCheckmarks() //unchecks any checked color
+        view.setImageResource(R.drawable.ic_outline_circle_black_48dp) //adds a check mark to the clicked image
     }
 
     //removes all checkMarks
@@ -309,6 +273,7 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
             val building = buildingTextView.text.toString()
             val professor = professorTextView.text.toString()
             val email = emailTextView.text.toString()
+            val address = addressTextView.text.toString()
             val timeStart = timeStart.text.toString()
             val timeEnd = timeEnd.text.toString()
 
@@ -338,6 +303,13 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
                 return@setOnClickListener
             } else {
                 emailTextView.error = null
+            }
+
+            if (address.isEmpty()) {
+                addressTextView.error = "This field is required"
+                return@setOnClickListener
+            } else {
+                addressTextView.error = null
             }
 
             if (timeStart == "Pick a time") {
@@ -358,10 +330,11 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
             bundle.putString("building", building)
             bundle.putString("professor", professor)
             bundle.putString("email", email)
+            bundle.putString("address", address)
             bundle.putString("timeStart", timeStart)
             bundle.putString("timeEnd", timeEnd)
             bundle.putInt("subjectColor", currentSubjectColor)
-            bundle.putInt("subjectTextColor", currentSubjectTextColor)
+            bundle.putInt("subjectTextColor", subjectTextColor)
             bundle.putBoolean("isEdit", false)
             newFragment.arguments = bundle
 
@@ -382,12 +355,12 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
         buildingTextView.setText(bundle.getString("building"))
         professorTextView.setText(bundle.getString("professor"))
         emailTextView.setText(bundle.getString("email"))
+        addressTextView.setText(bundle.getString("address"))
         timeStart.text = bundle.getString("timeStart")
         timeEnd.text = bundle.getString("timeEnd")
         currentSubjectColor = bundle.getInt("subjectColor")
         subjectColorImage.setColorFilter(currentSubjectColor)
-        currentSubjectTextColor = bundle.getInt("subjectTextColor")
-        subjectTextColorImage.setColorFilter(currentSubjectTextColor)
+        subjectTextColor = bundle.getInt("subjectTextColor")
 
         subjectCreate.text = "Edit"
         subjectCreate.setOnClickListener {
@@ -395,6 +368,7 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
             val building = buildingTextView.text.toString()
             val professor = professorTextView.text.toString()
             val email = emailTextView.text.toString()
+            val address = addressTextView.text.toString()
             val timeStart = timeStart.text.toString()
             val timeEnd = timeEnd.text.toString()
 
@@ -426,6 +400,13 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
                 emailTextView.error = null
             }
 
+            if (address.isEmpty()) {
+                addressTextView.error = "This field is required"
+                return@setOnClickListener
+            } else {
+                addressTextView.error = null
+            }
+
             if (timeStart == "Pick a time") {
                 Toast.makeText(context, "Please choose a starting time", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
@@ -443,10 +424,11 @@ class AddSubjectDialog : Fragment(), View.OnClickListener, TimePickerDialog.OnTi
             bundle.putString("newBuilding", building)
             bundle.putString("newProfessor", professor)
             bundle.putString("newEmail", email)
+            bundle.putString("newAddress", address)
             bundle.putString("newTimeStart", timeStart)
             bundle.putString("newTimeEnd", timeEnd)
             bundle.putInt("newSubjectColor", currentSubjectColor)
-            bundle.putInt("newSubjectTextColor", currentSubjectTextColor)
+            bundle.putInt("newSubjectTextColor", subjectTextColor)
             bundle.putBoolean("isEdit", true)
 
             newFragment.arguments = bundle

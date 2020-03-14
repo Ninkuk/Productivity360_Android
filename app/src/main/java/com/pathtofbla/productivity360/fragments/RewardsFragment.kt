@@ -73,11 +73,18 @@ class RewardsFragment : Fragment() {
                         return@setOnClickListener
                     }
 
-                    if (alertLayout.rewardDescriptionTextView.text.toString().isNotEmpty()) {
-                        rewardDescription = alertLayout.rewardDescriptionTextView.text.toString()
-                    } else {
-                        alertLayout.rewardDescriptionTextView.error = "Fill out a desc"
+                    val description = alertLayout.rewardDescriptionTextView.text.toString()
+                    if (description.isEmpty()) {
+                        alertLayout.rewardDescriptionTextView.error =
+                            "Fill out a description"
                         return@setOnClickListener
+                    } else if(description.length > 250) {
+                        alertLayout.rewardDescriptionTextView.error =
+                            "description too long"
+                        return@setOnClickListener
+                    } else {
+                        rewardDescription =
+                            alertLayout.rewardDescriptionTextView.text.toString()
                     }
 
                     val reward = Reward(rewardName, rewardPoints, rewardDescription)
