@@ -119,13 +119,18 @@ class RewardsViewHolder(
                             return@setOnClickListener
                         }
 
-                        if (editAlertLayout.rewardDescriptionTextView.text.toString().isNotEmpty()) {
+                        val description = editAlertLayout.rewardDescriptionTextView.text.toString()
+                        if (description.isEmpty()) {
+                            editAlertLayout.rewardDescriptionTextView.error =
+                                "Fill out a description"
+                            return@setOnClickListener
+                        } else if(description.length > 250) {
+                            editAlertLayout.rewardDescriptionTextView.error =
+                                "description too long"
+                            return@setOnClickListener
+                        } else {
                             rewardDescription =
                                 editAlertLayout.rewardDescriptionTextView.text.toString()
-                        } else {
-                            editAlertLayout.rewardDescriptionTextView.error =
-                                "Fill out a desc"
-                            return@setOnClickListener
                         }
 
                         view.rewardProgressBar.max = reward.points

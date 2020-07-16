@@ -50,6 +50,7 @@ class SubjectsFragment : Fragment() {
                 val oldBuilding = bundle.getString("building")!!
                 val oldProfessor = bundle.getString("professor")!!
                 val oldEmail = bundle.getString("email")!!
+                val oldAddress = bundle.getString("address")!!
                 val oldTimeStart = bundle.getString("timeStart")!!
                 val oldTimeEnd = bundle.getString("timeEnd")!!
                 val oldSubjectColor = bundle.getInt("subjectColor")
@@ -58,6 +59,7 @@ class SubjectsFragment : Fragment() {
                 val oldSubject = Subject(
                     oldClassName,
                     oldBuilding,
+                    oldAddress,
                     oldTimeStart,
                     oldTimeEnd,
                     Teacher(oldProfessor, oldEmail),
@@ -69,6 +71,7 @@ class SubjectsFragment : Fragment() {
                 val building = bundle.getString("newBuilding")!!
                 val professor = bundle.getString("newProfessor")!!
                 val email = bundle.getString("newEmail")!!
+                val address = bundle.getString("newAddress")!!
                 val timeStart = bundle.getString("newTimeStart")!!
                 val timeEnd = bundle.getString("newTimeEnd")!!
                 val subjectColor = bundle.getInt("newSubjectColor")
@@ -77,6 +80,7 @@ class SubjectsFragment : Fragment() {
                 val subject = Subject(
                     className,
                     building,
+                    address,
                     timeStart,
                     timeEnd,
                     Teacher(professor, email),
@@ -95,6 +99,7 @@ class SubjectsFragment : Fragment() {
                 val building = bundle.getString("building")!!
                 val professor = bundle.getString("professor")!!
                 val email = bundle.getString("email")!!
+                val address = bundle.getString("address")!!
                 val timeStart = bundle.getString("timeStart")!!
                 val timeEnd = bundle.getString("timeEnd")!!
                 val subjectColor = bundle.getInt("subjectColor")
@@ -103,6 +108,7 @@ class SubjectsFragment : Fragment() {
                 val subject = Subject(
                     className,
                     building,
+                    address,
                     timeStart,
                     timeEnd,
                     Teacher(professor, email),

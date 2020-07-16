@@ -31,6 +31,7 @@ class Homework(
 class Subject(
     val title: String,
     val building: String,
+    val address: String,
     val startTime: String,
     val endTime: String,
     val teacher: Teacher,

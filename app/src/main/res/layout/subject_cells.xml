@@ -14,52 +14,67 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
         app:cardBackgroundColor="@color/colorAccent"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="3dp"
         app:contentPadding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/className"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/class_name"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/building"
-                android:layout_width="match_parent"
+                android:id="@+id/className"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="@string/building"
-                android:textAlignment="textEnd"
-                android:textSize="18sp" />
+                android:text="@string/class_name"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/classTime"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/time"
-                android:textAlignment="textEnd"
-                android:textSize="18sp" />
+                android:layout_gravity="top"
+                android:orientation="vertical">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/professor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/professor"
-                android:textAlignment="textEnd"
-                android:textSize="18sp" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/building"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/building"
+                    android:textAlignment="textEnd"
+                    android:textSize="13sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/classTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/time"
+                    android:textAlignment="textEnd"
+                    android:textSize="13sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/professor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:gravity="bottom"
+                    android:text="@string/professor"
+                    android:textAlignment="textEnd"
+                    android:textSize="13sp" />
+            </LinearLayout>
         </LinearLayout>
+
     </com.google.android.material.card.MaterialCardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
